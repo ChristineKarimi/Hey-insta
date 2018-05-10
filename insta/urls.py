@@ -7,5 +7,6 @@ from .import views
 urlpatterns =[
   url(r'^$', views.index, name='Home'),
   url(r'^profile/(?P<username>[-_\w.]+)/$', views.profile, name='profile'),
+  url(r'^profile/(?P<username>[-_\w.]+)/edit/$', views.update_profile, name='edit'),
 
 ]
