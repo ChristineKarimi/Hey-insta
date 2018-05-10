@@ -29,4 +29,14 @@ def posts(request):
   else:
     form = PostForm()
   return render(request, 'post_picture.html', {"form": form})
+
+
+def followers(request, username):
+  user = user = User.objects.get(username = username)
+  user_profile = Profile.objects.get(user=user)
+  profiles = user_profile.followers.all
+
+  title = "Followers"
+
+  return render(request, 'follow_list.html', {"title": title, "profiles":profiles})  
     
