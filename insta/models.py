@@ -37,14 +37,14 @@ class Profile(models.Model):
     if self.following.count():
       return self.following.count()
     else:
-      return 0
+      return 
   def __str__(self):
     return self.user.username
 
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+#Initilizing model for the image
 class Post(models.Model):
   profile = models.ForeignKey(Profile)
   title = models.CharField(max_length = 100,)
