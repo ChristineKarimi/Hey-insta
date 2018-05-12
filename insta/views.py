@@ -79,3 +79,14 @@ def posts(request):
   else:
     form = PostForm()
   return render(request, 'post_picture.html', {"form": form}) 
+
+def post(request, pk):
+    post = Post.objects.get(pk=pk)
+    try:
+        like = Like.objects.get(post=post, user=request.user)
+        liked = 1
+    except:
+        like = None
+        liked = 0
+
+    return render(request, 'post.html', {"post": post}) 
