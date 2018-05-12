@@ -146,3 +146,11 @@ function update_unfollow_view(data) {
   $button.addClass('follow-user').removeClass('unfollow-user');
   $button.text('Follow');
 }
+
+$('.follow-toggle__container').on('click', '.follow-user', function() {
+  follow_user.call(this, update_follow_view, error_cb, 'follow');
+});
+
+$('.follow-toggle__container').on('click', '.unfollow-user', function() {
+  follow_user.call(this, update_unfollow_view, error_cb, 'unfollow');
+});
