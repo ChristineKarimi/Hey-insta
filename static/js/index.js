@@ -102,3 +102,13 @@ function comment_update_view(data) {
 
   $post.closest('.view-update').find('.comment-list').append(commentHTML);
 }
+
+$('.add-comment').on('keyup', function(e) {
+  if (enterPressed(e)) {
+    if (validComment($(this).val())) {
+      create_comment.call(this, comment_update_view, error_cb);
+      $(this).val('');
+    }
+  }
+});
+
