@@ -68,6 +68,7 @@ def following(request, username):
 
   return render(request, 'follow_list.html', {"title": title, "profiles":profiles})
 
+
 @login_required
 def posts(request):
   if request.method == 'POST':
@@ -78,7 +79,7 @@ def posts(request):
       return redirect('profile', kwargs={'username':request.user.username})
   else:
     form = PostForm()
-  return render(request, 'post_picture.html', {"form": form}) 
+  return render(request, 'post_picture.html', {"form": form})
 
 def post(request, pk):
     post = Post.objects.get(pk=pk)
@@ -89,7 +90,8 @@ def post(request, pk):
         like = None
         liked = 0
 
-    return render(request, 'post.html', {"post": post}) 
+    return render(request, 'post.html', {"post": post})
+
 
 def explore(request):
   random_posts = Post.objects.all().order_by('?')[:40]
@@ -102,7 +104,8 @@ def likes(request, pk):
   profiles = Like.objects.filter(post=post)
 
   title = 'Likes'
-  return render(request, 'follow_list.html', {"title": title, "profiles":profiles})  
+  return render(request, 'follow_list.html', {"title": title, "profiles":profiles})
+
 
 @ajax_request
 @login_required
@@ -122,7 +125,6 @@ def add_like(request):
         'result': result,
         'post_pk': post_pk
     }
-  
 
 @ajax_request
 @login_required
@@ -155,7 +157,7 @@ def add_comment(request):
         'result': result,
         'post_pk': post_pk,
         'commenter_info': commenter_info
-    }  
+    }
 
 @ajax_request
 @login_required
@@ -184,5 +186,4 @@ def follow_toggle(request):
         'result': result,
         'type': request.POST.get('type'),
         'follow_profile_pk': follow_profile_pk
-    }    
-  
+    }
