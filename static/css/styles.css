@@ -94,4 +94,73 @@ a:hover {
                   @media screen and (max-width: 724px) {
                     .picture-square:hover .content .fa:not(:first-of-type) {
                       margin-left: 10px; } }
-          
+  
+.options-bubbles {
+    display: inline-block; }
+    .options-bubbles:hover {
+      cursor: pointer; }
+    .options-bubbles .bubble {
+      display: inline-block;
+      height: 5px;
+      width: 5px;
+      border: 1px solid #8f8f8f;
+      border-radius: 100%;
+      margin: 0; }
+  
+  .desktop-block {
+    display: block; }
+    @media screen and (max-width: 724px) {
+      .desktop-block {
+        display: none; } }
+  
+  .mobile-block {
+    display: none; }
+    @media screen and (max-width: 724px) {
+      .mobile-block {
+        display: block; } }
+        
+
+
+
+        .navbar {
+            background-color: #fff;
+            border-bottom-color: #dbdbdb; }
+            .navbar .fa {
+              font-size: 25px;
+              color: #999999; }
+              .navbar .fa.active {
+                color: #333; }
+            .navbar .mobile {
+              display: none; }
+              .navbar .mobile a, .navbar .mobile a:hover, .navbar .mobile a:focus {
+                color: #333; }
+              .navbar .mobile .col-xs-3 {
+                text-align: center;
+                min-height: 50px;
+                width: 20%; }
+                .navbar .mobile .col-xs-3 .fa {
+                  font-size: 25px;
+                  margin-top: 13px; }
+            .navbar .navbar-brand:not(:first-of-type) {
+              float: right; }
+            .navbar#mobile-top-nav .item-right {
+              float: right;
+              padding: 15px; }
+            .navbar#mobile-top-nav .back-button .fa, .navbar#mobile-top-nav .new-message .fa {
+              padding: 16px 15px 15px;
+              font-size: 16px; }
+              .navbar#mobile-top-nav .back-button .fa:hover, .navbar#mobile-top-nav .new-message .fa:hover {
+                cursor: pointer; }
+            .navbar#mobile-top-nav .new-message {
+              float: right; }
+            @media screen and (max-width: 768px) {
+              .navbar#main-nav {
+                top: initial;
+                bottom: 0;
+                margin: 0;
+                border-top: 1px solid #ccc; }
+              .navbar .desktop {
+                display: none; }
+              .navbar .mobile {
+                display: block; } }
+                  
