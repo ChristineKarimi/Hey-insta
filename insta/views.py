@@ -96,4 +96,11 @@ def explore(request):
 
   
   return render(request, 'explore.html', {"posts":random_posts})
+
+def likes(request, pk):
+  post = Post.objects.get(pk=pk)
+  profiles = Like.objects.filter(post=post)
+
+  title = 'Likes'
+  return render(request, 'follow_list.html', {"title": title, "profiles":profiles})  
   
