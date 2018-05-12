@@ -50,3 +50,27 @@ function like_update_view(data) {
  } else {
    $likes.text(likes + ' likes');
  }
+
+ $('.submit-like').on('click', function() {
+  create_like.call(this, like_update_view, error_cb);
+});
+
+$('.card__main-image').on('dblclick', function() {
+  var $unlikedHeart = $(this).closest('.view-update').find('.fa-heart-o');
+  if($unlikedHeart) {
+    $unlikedHeart.click();
+  }
+})
+
+// comments section
+
+function enterPressed(e) {
+  if (e.key === "Enter") { return true; }
+  return false;
+}
+
+
+function validComment(text) {
+  if (text == '') return false;
+  return true;
+}
