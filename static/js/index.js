@@ -1,4 +1,8 @@
-// for likes
+/*
+ *
+ *    Likes
+ *
+ */
 
 function create_like(success_cb, error_cb) {
   var post_pk = $(this).siblings('.hidden-data').find('.post-pk').text();
@@ -24,7 +28,7 @@ function error_cb(error) {
 function like_update_view(data) {
   console.log(data);
 
-  // the toggle heart icon
+  // toggle heart
   var $hiddenData = $('.hidden-data.' + data.post_pk);
   if (data.result) {
     $hiddenData.siblings('.submit-like').removeClass('fa-heart-o').addClass('fa-heart');
@@ -32,26 +36,29 @@ function like_update_view(data) {
     $hiddenData.siblings('.submit-like').removeClass('fa-heart').addClass('fa-heart-o');
   }
 
- // update number of likes fo a given post
- var difference = data.result ? 1 : -1;
- var $post = $('.view-update.' + data.post_pk);
- var $likes = $post.find('.likes');
- var likes = parseInt($likes.text());
- likes = likes + difference;
+  // update like count
+  var difference = data.result ? 1 : -1;
+  var $post = $('.view-update.' + data.post_pk);
+  var $likes = $post.find('.likes');
+  var likes = parseInt($likes.text());
+  likes = likes + difference;
 
- console.log('likes', likes);
+  console.log('likes', likes);
 
- if (likes == null || isNaN(likes)) {
-   $likes.text('1 like');
- } else if (likes === 0) {
-   $likes.text('');
- } else if (likes === 1) {
-   $likes.text('1 like');
- } else {
-   $likes.text(likes + ' likes');
- }
+  if (likes == null || isNaN(likes)) {
+    $likes.text('1 like');
+  } else if (likes === 0) {
+    $likes.text('');
+  } else if (likes === 1) {
+    $likes.text('1 like');
+  } else {
+    $likes.text(likes + ' likes');
+  }
+}
 
- $('.submit-like').on('click', function() {
+
+
+$('.submit-like').on('click', function() {
   create_like.call(this, like_update_view, error_cb);
 });
 
@@ -62,7 +69,19 @@ $('.card__main-image').on('dblclick', function() {
   }
 })
 
-// comments section
+
+
+
+
+
+
+
+
+/*
+ *
+ *    Comments
+ *
+ */
 
 function enterPressed(e) {
   if (e.key === "Enter") { return true; }
@@ -74,6 +93,7 @@ function validComment(text) {
   if (text == '') return false;
   return true;
 }
+
 
 function create_comment(success_cb, error_cb) {
   var comment_text = $(this).val();
@@ -93,6 +113,7 @@ function create_comment(success_cb, error_cb) {
   });
 }
 
+
 function comment_update_view(data) {
   console.log(data);
   var $post = $('.hidden-data.' + data.post_pk);
@@ -103,6 +124,7 @@ function comment_update_view(data) {
   $post.closest('.view-update').find('.comment-list').append(commentHTML);
 }
 
+
 $('.add-comment').on('keyup', function(e) {
   if (enterPressed(e)) {
     if (validComment($(this).val())) {
@@ -112,7 +134,20 @@ $('.add-comment').on('keyup', function(e) {
   }
 });
 
-// follow and unfollow functionality
+
+
+
+
+
+
+
+
+
+/*
+ *
+ *    Follow/Unfollow
+ *
+ */
 
 function follow_user(success_cb, error_cb, type) {
   var follow_profile_pk = $(this).closest('.follow__card').attr('id')
@@ -147,6 +182,7 @@ function update_unfollow_view(data) {
   $button.text('Follow');
 }
 
+
 $('.follow-toggle__container').on('click', '.follow-user', function() {
   follow_user.call(this, update_follow_view, error_cb, 'follow');
 });
@@ -156,7 +192,18 @@ $('.follow-toggle__container').on('click', '.unfollow-user', function() {
 });
 
 
-// return button
-$('.back-button').on('click', function() {
-  window.history.back();
-})
+
+
+
+
+
+/*
+ *
+ *    General
+ *
+ */
+
+ // mobile back button
+ $('.back-button').on('click', function() {
+   window.history.back();
+ })
