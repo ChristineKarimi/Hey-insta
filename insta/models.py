@@ -7,7 +7,7 @@ from imagekit.models import ProcessedImageField
 
 # Create your models here.
 class Profile(models.Model):
-  user = models.ForeignKey(User)
+  user = models.OneToOneField(User, on_delete = models.CASCADE)
   bio = models.TextField(max_length = 30, blank = True)
   website = models.CharField(max_length=30, blank =True)
   phone_number = models.IntegerField(blank =True, null = True)
@@ -37,17 +37,14 @@ class Profile(models.Model):
     if self.following.count():
       return self.following.count()
     else:
-      return 
+      return 0
   def __str__(self):
     return self.user.username
 
 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#Initilizing model for the image
 class Post(models.Model):
-  profile = models.ForeignKey(User)
-  title = models.CharField(max_length = 100,)
+  profile = models.ForeignKey(Profile, null = True, blank = True)
+  title = models.CharField(max_length = 100)
   image = models.ImageField(upload_to = 'posts/')
   posted_on = models.DateTimeField(auto_now_add=True)
 
@@ -58,12 +55,9 @@ class Post(models.Model):
     return self.comment_set.count()
 
 
-#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 class Comment(models.Model):
-  user = models.ForeignKey(Profile)
-  post = models.ForeignKey(Post)  
+  post = models.ForeignKey('Post')
+  user = models.ForeignKey(User)
   comment = models.CharField(max_length = 100)
   post_on = models.DateTimeField(auto_now_add=True)
 
@@ -71,11 +65,8 @@ class Comment(models.Model):
     return self.comment
 
 
-#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 class Like(models.Model):
-  post = models.ForeignKey(Post)
+  post = models.ForeignKey('Post')
   user = models.ForeignKey(User)
 
   class Meta:
