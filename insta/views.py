@@ -49,3 +49,12 @@ def profile(request, username):
 
   title = f"{user.username}"
   return render(request, 'profiles/profile.html', {"title": title, "user":user, "profile":profile})
+
+def followers(request, username):
+  user = user = User.objects.get(username = username)
+  user_profile = Profile.objects.get(user=user)
+  profiles = user_profile.followers.all
+
+  title = "Followers"
+
+  return render(request, 'follow_list.html', {"title": title, "profiles":profiles})
