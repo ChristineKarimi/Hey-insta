@@ -74,3 +74,21 @@ function validComment(text) {
   if (text == '') return false;
   return true;
 }
+
+function create_comment(success_cb, error_cb) {
+  var comment_text = $(this).val();
+  var post_pk = $(this).parent().siblings('.hidden-data').find('.post-pk').text();
+
+  console.log(comment_text, post_pk);
+
+  $.ajax({
+    type: "POST",
+    url: '/comment/',
+    data: {
+      comment_text: comment_text,
+      post_pk: post_pk
+    },
+    success: function(data) { success_cb(data); },
+    error: function(error) { error_cb(error); }
+  });
+}
