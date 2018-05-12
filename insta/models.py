@@ -46,7 +46,7 @@ class Profile(models.Model):
 
 #Initilizing model for the image
 class Post(models.Model):
-  profile = models.ForeignKey(Profile)
+  profile = models.ForeignKey(User)
   title = models.CharField(max_length = 100,)
   image = models.ImageField(upload_to = 'posts/')
   posted_on = models.DateTimeField(auto_now_add=True)
