@@ -90,3 +90,10 @@ def post(request, pk):
         liked = 0
 
     return render(request, 'post.html', {"post": post}) 
+
+def explore(request):
+  random_posts = Post.objects.all().order_by('?')[:40]
+
+  
+  return render(request, 'explore.html', {"posts":random_posts})
+  
