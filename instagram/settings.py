@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'insta',
     'bootstrap3',
     'imagekit',
+    
 ]
 
 MIDDLEWARE = [
