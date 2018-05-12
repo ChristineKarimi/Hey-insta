@@ -17,3 +17,5 @@ urlpatterns =[
   url(r'^comment/$', views.add_comment, name='comment'),
   url(r'^follow_toggle/$', views.follow_toggle, name='follow_toggle'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
