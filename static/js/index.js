@@ -112,3 +112,21 @@ $('.add-comment').on('keyup', function(e) {
   }
 });
 
+// follow and unfollow functionality
+
+function follow_user(success_cb, error_cb, type) {
+  var follow_profile_pk = $(this).closest('.follow__card').attr('id')
+                        || $(this).attr('id');
+  console.log(follow_profile_pk);
+
+  $.ajax({
+    type: "POST",
+    url: '/follow_toggle/',
+    data: {
+      follow_profile_pk: follow_profile_pk,
+      type: type
+    },
+    success: function(data) { success_cb(data); },
+    error: function(error) { error_cb(error); }
+  });
+}
