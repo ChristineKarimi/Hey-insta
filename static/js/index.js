@@ -130,3 +130,19 @@ function follow_user(success_cb, error_cb, type) {
     error: function(error) { error_cb(error); }
   });
 }
+
+function update_follow_view(data) {
+  console.log('data',data);
+  var $button = $('.follow__card#' + data.follow_profile_pk
+                + ' .btn, .profile .follow-toggle__container .btn');
+  $button.addClass('unfollow-user').removeClass('follow-user');
+  $button.text('Following');
+}
+
+function update_unfollow_view(data) {
+  console.log('data',data);
+  var $button = $('.follow__card#' + data.follow_profile_pk
+                + ' .btn, .profile .follow-toggle__container .btn');
+  $button.addClass('follow-user').removeClass('unfollow-user');
+  $button.text('Follow');
+}
