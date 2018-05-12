@@ -67,3 +67,15 @@ def following(request, username):
   title = "Following"
 
   return render(request, 'follow_list.html', {"title": title, "profiles":profiles})
+
+@login_required
+def posts(request):
+  if request.method == 'POST':
+    form = PostForm(request.POST,files = request.FILES)
+    if form.is_valid():
+      post = Post(profile = request.user.profile, title = request.POST['title'], image = request.FILES['image'])
+      post.save()
+      return redirect('profile', kwargs={'username':request.user.username})
+  else:
+    form = PostForm()
+  return render(request, 'post_picture.html', {"form": form}) 
