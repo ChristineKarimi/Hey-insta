@@ -12,7 +12,7 @@
 
 ## Description
 
->  A clone of the popular photo app Instagram.
+> - A clone of the popular photo app Instagram.
 
 ## Specifications
 
@@ -38,7 +38,7 @@
 ## Setup/Installation Requirements
 
 > - Internet connection
-> - Link to deployed page: [Epitome](https://the-epitome.herokuapp.com/)
+> - Link to deployed page: [HeyInsta](https://hey-insta.herokuapp.com/)
 
 ## Known Bugs
 
