@@ -5,26 +5,35 @@
 > --------------------------------------------------------------------------------
 
 
-![App](/static/images/kim.png)
+![App](/static/images/r.png)
 
 > --------------------------------------------------------------------------------
 
 
 ## Description
 
-> Epitome is a personal gallery application built on django where I display my photos for others to see.
+>  A clone of the popular photo app Instagram.
 
 ## Specifications
-> -Has an administration dashboard that allows the admin to post new pics, edit them and delete existing pics.
+
+> -As a user of the application I should be able to:
+
+> - Sign in to the application to start using.
+
+> - Upload my pictures to the application.
+
+> - See my profile with all my pictures.
+
+> --------------------------------------------------------------------------------
 
 
-> - Users are able to search for pics according to categories.
+![App](/static/images/d.png)
 
+> --------------------------------------------------------------------------------
 
-> - Users can view a single pic in its fullscreen size.
+> - Follow other users and see their pictures on my timeline.
 
-
-> - Users can also view the details of the image and even copy the link of the image url.
+> - Like a picture and leave a comment on it.
 
 ## Setup/Installation Requirements
 
@@ -36,15 +45,24 @@
 > No known bugs 
 
 ## Technologies used
-> - dj-database-url==0.4.2
-> - Django==2.0.2
-> - django-bootstrap4==0.0.6
-> - gunicorn==19.7.1
-> - Pillow==5.0.0
+
+> - astroid==1.6.3
+> - Django==1.11
+> - django-appconf==1.0.2
+> - django-bootstrap3==10.0.1
+> - django-imagekit==4.0.2
+> - isort==4.3.4
+> - lazy-object-proxy==1.3.1
+> - mccabe==0.6.1
+> - pilkit==2.0
+> - Pillow==5.1.0
+> - pkg-resources==0.0.0
 > - psycopg2==2.7.4
-> - python-decouple==3.1
-> - pytz==2018.3
-> - whitenoise==3.3.1
+> - psycopg2-binary==2.7.4
+> - pylint==1.8.4
+> - pytz==2018.4
+> - six==1.11.0
+> - wrapt==1.10.11
 
 ## Support and contact details
 
