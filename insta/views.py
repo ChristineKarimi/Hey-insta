@@ -14,10 +14,12 @@ from annoying.decorators import ajax_request
 def index(request):
   # Only return posts from users that are being followed
   users_followed = request.user.profile.following.all()
-  posts = Post.objects.filter(profile__in=users_followed).order_by('-posted_on')
+  posts = Post.objects.all().order_by('-posted_on')
 
 
   return render(request,'index.html',{"posts":posts})
+
+#------------------------------------------------------------------------------------------------------------------------------
 
 @login_required
 @transaction.atomic
@@ -39,6 +41,9 @@ def update_profile(request, username):
   return render(request, 'profiles/profile_form.html', {"user_form": user_form,"profile_form": profile_form})
 
 
+#-------------------------------------------------------------------------------------------------------------------------------
+
+
 @login_required
 def profile(request, username):
   user = User.objects.get(username = username)
@@ -50,6 +55,10 @@ def profile(request, username):
   title = f"{user.username}"
   return render(request, 'profiles/profile.html', {"title": title, "user":user, "profile":profile})
 
+
+#-------------------------------------------------------------------------------------------------------------------------------
+
+
 def followers(request, username):
   user = user = User.objects.get(username = username)
   user_profile = Profile.objects.get(user=user)
@@ -58,6 +67,9 @@ def followers(request, username):
   title = "Followers"
 
   return render(request, 'follow_list.html', {"title": title, "profiles":profiles})
+
+#-------------------------------------------------------------------------------------------------------------------------------
+
 
 def following(request, username):
   user = user = User.objects.get(username = username)
@@ -69,6 +81,8 @@ def following(request, username):
   return render(request, 'follow_list.html', {"title": title, "profiles":profiles})
 
 
+#-------------------------------------------------------------------------------------------------------------------------------
+
 @login_required
 def posts(request):
   if request.method == 'POST':
@@ -76,10 +90,12 @@ def posts(request):
     if form.is_valid():
       post = Post(profile = request.user.profile, title = request.POST['title'], image = request.FILES['image'])
       post.save()
-      return redirect('profile', kwargs={'username':request.user.username})
+      return redirect('profile', request.user)
   else:
     form = PostForm()
   return render(request, 'post_picture.html', {"form": form})
+
+#-------------------------------------------------------------------------------------------------------------------------------
 
 def post(request, pk):
     post = Post.objects.get(pk=pk)
@@ -93,6 +109,8 @@ def post(request, pk):
     return render(request, 'post.html', {"post": post})
 
 
+#-------------------------------------------------------------------------------------------------------------------------------
+
 def explore(request):
   random_posts = Post.objects.all().order_by('?')[:40]
 
@@ -105,6 +123,9 @@ def likes(request, pk):
 
   title = 'Likes'
   return render(request, 'follow_list.html', {"title": title, "profiles":profiles})
+
+
+ #-----------------------------------------------------------------------------------------------------------------------------
 
 
 @ajax_request
@@ -158,6 +179,9 @@ def add_comment(request):
         'post_pk': post_pk,
         'commenter_info': commenter_info
     }
+
+
+#-------------------------------------------------------------------------------------------------------------------------------   
 
 @ajax_request
 @login_required

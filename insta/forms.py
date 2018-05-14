@@ -7,10 +7,12 @@ class UserForm(forms.ModelForm):
     model = User
     fields = ('first_name', 'last_name', 'email')
 
+
 class ProfileForm(forms.ModelForm):
   class Meta:
     model = Profile
     fields = ('bio', 'location','birth_date','website','phone_number','profile_pic')
+
 
 class PostForm(forms.ModelForm):
   class Meta:
