@@ -220,10 +220,10 @@ def follow_toggle(request):
 def search_results(request):
     if 'profile' in request.GET and request.GET['profile']:
         search_input = request.GET.get('profile')
-        searched_images = profile.search_by_category(search_input)
+        searched_profiles = profile.search_by_id(search_input)
         message = f"{search_input}"
 
-        return render(request, 'search.html', {"message":message, "profile":searched_profiles})
+        return render({"message":message, "profile":searched_profiles})
 
     else:
         message = "Please input something in the search field"
