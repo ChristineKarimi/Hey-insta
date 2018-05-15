@@ -147,6 +147,8 @@ def add_like(request):
         'post_pk': post_pk
     }
 
+#-------------------------------------------------------------------------------------------------------------------------------
+
 @ajax_request
 @login_required
 def add_comment(request):
@@ -216,12 +218,12 @@ def follow_toggle(request):
 
 
 def search_results(request):
-    if 'image' in request.GET and request.GET['image']:
-        search_input = request.GET.get('image')
-        searched_images = Image.search_by_category(search_input)
+    if 'profile' in request.GET and request.GET['profile']:
+        search_input = request.GET.get('profile')
+        searched_images = profile.search_by_category(search_input)
         message = f"{search_input}"
 
-        return render(request, 'search.html', {"message":message, "images":searched_images})
+        return render(request, 'search.html', {"message":message, "profile":searched_profiles})
 
     else:
         message = "Please input something in the search field"
