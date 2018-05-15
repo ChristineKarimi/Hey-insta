@@ -217,13 +217,13 @@ def follow_toggle(request):
 #-------------------------------------------------------------------------------------------------------------------------------
 
 
-def search_results(request):
+def search_profile(request):
     if 'profile' in request.GET and request.GET['profile']:
         search_input = request.GET.get('profile')
         searched_profiles = profile.search_by_id(search_input)
         message = f"{search_input}"
 
-        return render({"message":message, "profile":searched_profiles})
+        return render_to_response('search.html', {"message":message, "profile":searched_profiles})
 
     else:
         message = "Please input something in the search field"
