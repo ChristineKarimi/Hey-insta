@@ -217,14 +217,14 @@ def follow_toggle(request):
 #-------------------------------------------------------------------------------------------------------------------------------
 
 
-def search_profile(request):
-    if 'profile' in request.GET and request.GET['profile']:
-        search_input = request.GET.get('profile')
-        searched_profiles = profile.search_by_id(search_input)
-        message = f"{search_input}"
-
-        return render_to_response('search.html', {"message":message, "profile":searched_profiles})
-
+def search(request):        
+    if request.method == 'POST':      
+        profile =  request.POST.getprofile('search')      
+        try:
+            status = Add_prod.objects.filter(profile__icontains=profile)
+            #Add_prod class contains a column
+        except Add_prod.DoesNotExist:
+            status = None
+        return render(request,"search.html",{"books":status})
     else:
-        message = "Please input something in the search field"
-        return render(request, 'search.html', {'message':message})    
+        return render(request,"search.html",{})    
