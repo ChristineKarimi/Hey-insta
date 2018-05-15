@@ -4,7 +4,7 @@ from .models import Post,Profile
 
 # Create your tests here.
 
-class ImageTestClass(TestCase):
+class PostTestClass(TestCase):
 
     def setUp(self):
 
@@ -31,3 +31,53 @@ saving post functionality test
         images = Image.objects.all()
 
         self.assertTrue(len(images)>0)        
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'''
+testing the delete method
+
+'''
+
+    def test_delete_method(self):
+
+        self.new_post.save_image()
+
+        images = post.objects.all()
+
+        self.new_post.delete_image()
+
+        self.assertTrue(len(images)==0)
+        
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------        
+'''
+testing the update method for the image caption
+
+'''
+
+   def test_update_method(self):
+
+        self.new_post.save_post()
+
+        self.new_post.update_caption(self.new_image.id,'great day')
+
+        image = post.objects.filter(caption='great day').all()
+
+        self.assertTrue(len(post)==1)
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'''
+  getting a post by id test
+
+'''  
+    
+     def test_get_post_by_id(self):
+
+        find_post = self.new_post.get_post_by_id(self.new_post.id)
+
+        post = Post.objects.filter(id = self.new_post.id)
+
+        self.assertTrue(find_post,post)
+
+    def tearDown(self):
+
+        Post.objects.all().delete()   
