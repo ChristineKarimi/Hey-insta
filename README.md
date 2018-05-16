@@ -8,6 +8,12 @@
 ![App](/static/images/0.png)
 
 > --------------------------------------------------------------------------------
+<!-- > --------------------------------------------------------------------------------
+
+
+![App](/static/images/Hey Insta.png)
+
+> -------------------------------------------------------------------------------- -->
 
 
 ## Description
@@ -24,12 +30,6 @@
 
 > - See my profile with all my pictures.
 
-<!-- > --------------------------------------------------------------------------------
-
-
-![App](/static/images/d.png)
-
-> -------------------------------------------------------------------------------- -->
 
 > - Follow other users and see their pictures on my timeline.
 
@@ -71,7 +71,7 @@
 
 ## License and terms of use
 
-> [MIT License](license) this application's source code is free for any open source projects
+> [MIT License](license)
 
 > --------------------------------------------------------------------------------
 
