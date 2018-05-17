@@ -38,7 +38,7 @@
 ## Setup/Installation Requirements
 
 > - Internet connection
-> - Link to deployed page: [HeyInsta](https://hey-insta.herokuapp.com/)
+> - Link to deployed page
 
 ## Known Bugs
 
