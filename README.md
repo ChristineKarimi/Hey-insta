@@ -38,7 +38,7 @@
 ## Setup/Installation Requirements
 
 > - Internet connection
-> - Link to deployed page
+> - Link to deployed page.
 
 ## Known Bugs
 
